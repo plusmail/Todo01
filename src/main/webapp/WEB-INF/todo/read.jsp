@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Todo 상세보기</h1>
-
+${dto.tno} - ${dto.title} - ${dto.dueDate} - ${dto.finished}
 <form action="/todo/modify" method="get">
 
     <button type="submit">수정으로 이동</button>

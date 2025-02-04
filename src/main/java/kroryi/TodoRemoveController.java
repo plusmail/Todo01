@@ -11,7 +11,6 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/todo/remove")
 public class TodoRemoveController extends HttpServlet {
-
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.sendRedirect("/todo/list");
 

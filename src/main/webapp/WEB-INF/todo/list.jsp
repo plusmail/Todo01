@@ -1,5 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%--<%@ taglib prefix="fmt" uri="https://jakarta.ee/jstl/fmt" %>--%>
 <html>
 <head>
     <title>Title</title>
@@ -7,10 +9,10 @@
 <body>
 <h1>Todo 목록보기</h1>
 <ul>
-    <li><a href="/todo/read">목록 1</a></li>
-    <li><a href="/todo/read">목록 2</a></li>
-    <li><a href="/todo/read">목록 3</a></li>
-    <li><a href="/todo/read">목록 4</a></li>
+    <c:forEach var="dto" items="${list}">
+        <li>${dto.getTno()}- ${dto.getTitle()} - ${dto.getDueDate()} - ${dto.isFinished()}</li>
+    </c:forEach>
+
 </ul>
 <form action="/todo/register" method="get">
     <button type="submit">등록페이지 이동</button>
