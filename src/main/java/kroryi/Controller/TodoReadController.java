@@ -1,6 +1,5 @@
 package kroryi.Controller;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +11,6 @@ import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.NoSuchElementException;
 
 @Log4j2
 @WebServlet(urlPatterns = "/todo/read")
