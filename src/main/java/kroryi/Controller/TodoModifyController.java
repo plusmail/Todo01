@@ -1,4 +1,4 @@
-package kroryi;
+package kroryi.Controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.lang.reflect.Member;
 
 @WebServlet(urlPatterns = "/todo/modify")
 public class TodoModifyController extends HttpServlet {

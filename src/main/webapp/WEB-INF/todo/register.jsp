@@ -8,6 +8,8 @@
 <h1>Todo 등록 화면</h1>
 <form action="/todo/register" method="post">
     <input type="text" name="title">
+    <input type="date" name="dueDate">
+    <button type="reset">취소</button>
     <button type="submit">등록</button>
 </form>
 </body>

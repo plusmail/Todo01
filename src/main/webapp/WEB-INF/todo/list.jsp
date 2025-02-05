@@ -9,7 +9,7 @@
 <body>
 <h1>Todo 목록보기</h1>
 <ul>
-    <c:forEach var="dto" items="${list}">
+    <c:forEach var="dto" items="${dtoList}">
         <li>${dto.getTno()}- ${dto.getTitle()} - ${dto.getDueDate()} - ${dto.isFinished()}</li>
     </c:forEach>
 

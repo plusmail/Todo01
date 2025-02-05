@@ -52,7 +52,7 @@ public class ConnectTests {
         config.setUsername("root");
         config.setPassword("1333");
         config.addDataSourceProperty("cachePrepStmts", "true");
-        config.addDataSourceProperty("prepStmtCacheSize", "250");
+        config.addDataSourceProperty("prepStmtCacheSize", "250"); // select * from ABC where name=? and age = ?;
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
         config.setMaximumPoolSize(10); // 최대 컨넥션 수
         config.setMinimumIdle(5); // 최소 유효 컨넥션 수
