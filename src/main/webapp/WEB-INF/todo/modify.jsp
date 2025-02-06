@@ -7,9 +7,19 @@
 <body>
 <h1>Todo 수정 화면</h1>
 <form action="/todo/modify" method="post">
-    <input type="text" name="title"  value="제목 수정">
+    <div>
+        <input type="text" name="tno" value="${dto.tno}" readonly>
+    </div>
+    <div>
+        <input type="text" name="title" value="${dto.title}">
+    </div>
+    <div>
+        <input type="date" name="dueDate" value="${dto.dueDate}">
+    </div>
+    <div>
+        <input type="checkbox" name="finished" ${dto.finished ? "checked" : ""}>
+    </div>
     <button type="submit">수정</button>
-
 </form>
 </body>
 </html>

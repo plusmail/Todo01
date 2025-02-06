@@ -1,4 +1,4 @@
-package kroryi.Controller;
+package kroryi.Controller.todo;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

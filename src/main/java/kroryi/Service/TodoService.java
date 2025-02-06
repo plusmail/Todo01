@@ -7,10 +7,8 @@ import kroryi.VO.TodoVO;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 
 @Log4j2
@@ -32,7 +30,6 @@ public enum TodoService {
     public void register(TodoDTO todoDTO) throws Exception{
 
         TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
-//        System.out.println("todoVO:" + todoVO);
         log.info("TodoVO출력:", todoVO);
 
         dao.insert(todoVO);
@@ -58,6 +55,17 @@ public enum TodoService {
         TodoDTO todoDTO = modelMapper.map(todoVO, TodoDTO.class);
 
         return todoDTO;
+    }
+
+    public void remove(Long tno) throws Exception {
+        log.info("Remove tno......:" , tno);
+        dao.deleteOne(tno);
+    }
+
+    public void modify(TodoDTO todoDTO) throws Exception {
+        log.info("modify ......", todoDTO);
+        TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
+        dao.updateOne(todoVO);
     }
 
 }

@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <style>
-    .todo-list {
+    .member-list {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -14,7 +14,7 @@
         max-width: 600px;
 
     }
-    .todo-item {
+    .member-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -25,21 +25,21 @@
         transition: 0.3s;
         box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
-    .todo-item:hover {
+    .member-item:hover {
         background: #e6e6e6;
     }
 
-    .todo-text {
+    .member-text {
         font-size: 16px;
         font-weight: 500;
         color : #333;
         text-decoration: none;
     }
-    .todo-item.completed .todo-text {
+    .member-item.completed .member-text {
         text-decoration: line-through;
         color: #888;
     }
-    .todo-date {
+    .member-date {
         font-size: 14px;
         color: #666;
     }
@@ -65,21 +65,21 @@
     }
 </style>
 <body>
-<h1>Todo 목록보기</h1>
+<h1>회원 목록보기</h1>
 
 <ul>
     <c:forEach var="dto" items="${dtoList}">
-        <li class="todo-list">
-            <span>${dto.getTno()}</span>
-            <span><a href="/todo/read?tno=${dto.tno}">${dto.getTitle()}</a></span>
-            <span class="todo-date">${dto.getDueDate()}</span>
-            <span>${dto.isFinished()}</span>
+        <li class="member-list">
+            <span>${dto.getMid()}</span>
+            <span><a href="/member/read?mid=${dto.mid}">${dto.getMname()}</a></span>
+            <span>${dto.getMpw()}</span>
+            <span>${dto.getMemail()}</span>
         </li>
     </c:forEach>
 
 
 </ul>
-<form action="/todo/register" method="get">
+<form action="/member/register" method="get">
     <button type="submit" class="register-button">등록페이지 이동</button>
 </form>
 <script>
