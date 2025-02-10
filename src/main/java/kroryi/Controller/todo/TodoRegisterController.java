@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import kroryi.DTO.TodoDTO;
 import kroryi.Service.TodoService;
 import lombok.extern.log4j.Log4j2;
@@ -23,6 +24,19 @@ public class TodoRegisterController extends HttpServlet {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        HttpSession session = req.getSession();
+        if(session.isNew()){
+            log.info("jsession is new");
+            res.sendRedirect("/login");
+            return;
+        }
+
+        if(session.getAttribute("loginInfo") == null){
+            log.info("loginInfo is null 로그인 페이지로 이동");
+            res.sendRedirect("/login");
+        }
+
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/todo/register.jsp");
         rd.forward(req, res);
     }

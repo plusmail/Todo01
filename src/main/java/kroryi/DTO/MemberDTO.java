@@ -17,5 +17,6 @@ public class MemberDTO {
     private String mpw;
     private String mname;
     private String memail;
+    private String password_match;
 
 }

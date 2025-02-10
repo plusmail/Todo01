@@ -2,19 +2,57 @@ package kroryi.DAO;
 
 import kroryi.VO.MemberVO;
 import lombok.Cleanup;
+import lombok.extern.slf4j.Slf4j;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class MemberDAO {
+
+    // 바인딩된 값으로 SQL 쿼리를 대체하는 메서드
+    public String preparedStatementToString(String sql, Object... params) {
+        for (Object param : params) {
+            String value = (param instanceof String) ? "'" + param + "'" : param.toString();
+            sql = sql.replaceFirst("\\?", value);
+        }
+        return sql;
+    }
+
+    public MemberVO getMemberWithPasswordCheck(String mid, String mpw) throws Exception {
+        String sql = "SELECT mid, mname, memail, " +
+                "CASE WHEN mpw = SHA2(?, 256) THEN 1 ELSE 0 END AS password_match " +
+                "FROM tbl_member WHERE mid = ?";
+
+        @Cleanup Connection con = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement psmt = con.prepareStatement(sql);
+
+//        log.info("getMemberWithPasswordCheck {}", preparedStatementToString(sql, mpw, mid));
+
+        psmt.setString(1, mpw);  // 비밀번호 입력값
+        psmt.setString(2, mid);  // 사용자 ID
+
+        @Cleanup ResultSet rs = psmt.executeQuery();
+
+        if (rs.next()) {
+            MemberVO vo = MemberVO.builder()
+                    .mid(rs.getString("mid"))
+                    .mname(rs.getString("mname"))
+                    .memail(rs.getString("memail"))
+                    .password_match(rs.getString("password_match"))
+                    .build();
+            log.info(vo.toString());
+//            test01,홍길동,a@a.co.kr,1
+
+            return vo;
+        }
+        return null;
+    }
 
 
     public void insert(MemberVO vo) throws Exception {
-        String sql = "INSERT INTO tbl_member(mid, mpw, mname, memail) values (?,?,?,?)";
+        String sql = "INSERT INTO tbl_member(mid, mpw, mname, memail) values (?,SHA2(?,256),?,?)";
         @Cleanup Connection con = ConnectionUtil.INSTANCE.getConnection();
         @Cleanup PreparedStatement psmt = con.prepareStatement(sql);
 

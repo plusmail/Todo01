@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
 <%--<%@ taglib prefix="fmt" uri="https://jakarta.ee/jstl/fmt" %>--%>
 <html>
 <head>
@@ -66,6 +67,9 @@
 </style>
 <body>
 <h1>Todo 목록보기</h1>
+<form action="${cp}/logout" method="post">
+    <button>로그아웃</button>
+</form>
 
 <ul>
     <c:forEach var="dto" items="${dtoList}">

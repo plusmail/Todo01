@@ -63,4 +63,12 @@ public class MemberDAOTests {
 
         dao.deleteOne(mid);
     }
+
+    @Test
+    public void testLogin() throws Exception{
+        String mid = "test01";
+        String mpw = "1111";
+        MemberVO vo = dao.getMemberWithPasswordCheck(mid, mpw);
+        log.info("Member->LoginTest : {}", vo);
+    }
 }
