@@ -6,6 +6,8 @@
 </head>
 <body>
 <h1>Todo 수정 화면</h1>
+<jsp:include page="/menu.jsp"/>
+
 <form action="/todo/modify" method="post">
     <div>
         <input type="text" name="tno" value="${dto.tno}" readonly>

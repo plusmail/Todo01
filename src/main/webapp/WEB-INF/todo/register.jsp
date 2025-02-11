@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="/menu.jsp"/>
+
 <h1>Todo 등록 화면</h1>
 <form action="/todo/register" method="post">
     <input type="text" name="title">

@@ -66,6 +66,7 @@
 </style>
 <body>
 <h1>회원 목록보기</h1>
+<jsp:include page="/menu.jsp"/>
 
 <ul>
     <c:forEach var="dto" items="${dtoList}">

@@ -5,10 +5,10 @@
 </head>
 <body>
 <h1>웹 개발 워크북 실습</h1>
-
-<a href="/todo/list">Todo 목록보기</a> <br>
-<a href="/member/list">회원 목록보기</a> <br>
-<a href="/board/list">게시판 목록보기</a> <br>
+<%--컴파일 시점에 다른 JSP파일을 현재의 JSP에 포함--%>
+<%--<%@ include file="/WEB-INF/menu.jsp"%>--%>
+<%--실행 시점에 menu.jsp를 로드 하는 방식--%>
+<jsp:include page="menu.jsp"/>
 
 </body>
 </html>
