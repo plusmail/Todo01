@@ -7,6 +7,7 @@ import kroryi.VO.MemberVO;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,6 +75,14 @@ public enum MemberService {
         dao.updateOne(vo);
     }
 
+    public void updateUuid(String mid, String uuid) throws Exception {
+        dao.updateUuid(mid, uuid);
+    }
+
+    public MemberDTO getByUUID(String uuid) throws Exception {
+        MemberVO vo = dao.selectUUID(uuid);
+        return modelMapper.map(vo, MemberDTO.class);
+    }
 
 }
 

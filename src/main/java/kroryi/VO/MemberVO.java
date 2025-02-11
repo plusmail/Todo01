@@ -17,4 +17,5 @@ public class MemberVO {
     private String mname;
     private String memail;
     private String password_match;
+    private String uuid;
 }

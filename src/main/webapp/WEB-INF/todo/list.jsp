@@ -10,8 +10,6 @@
 <h1>Todo 목록보기</h1>
 <jsp:include page="/menu.jsp"/>
 
-
-
 <form action="${cp}/logout" method="post">
     <button>로그아웃</button>
 </form>

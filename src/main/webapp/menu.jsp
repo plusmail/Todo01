@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="kroryi.DTO.MemberDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
@@ -10,15 +9,16 @@
         <li><a href="/member/list">회원관리</a></li>
         <li><a href="/todo/list">할일관리</a></li>
 
+
         <c:choose>
-            <c:when test="${loginInfo.password_match == 1}">
-                <li><a href="/loginout">로그아웃</a></li>
+            <c:when test="${sessionScope.loginInfo.password_match == 1}">
+                <li><a href="/logout">로그아웃</a></li>
                 <li class="profile-menu">
                     <a href="">프로필</a>
                     <div class="dropdown-content">
-                        <p><strong>ID : </strong> ${loginInfo.mid}</p>
-                        <p><strong>이름 : </strong> ${loginInfo.mname}</p>
-                        <p><strong>Email : </strong> ${loginInfo.memail}</p>
+                        <p><strong>ID : </strong> ${sessionScope.loginInfo.mid}</p>
+                        <p><strong>이름 : </strong> ${sessionScope.loginInfo.mname}</p>
+                        <p><strong>Email : </strong> ${sessionScope.loginInfo.memail}</p>
                     </div>
 
                 </li>

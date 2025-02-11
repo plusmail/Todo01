@@ -125,4 +125,32 @@ public class MemberDAO {
         psmt.executeUpdate();
     }
 
+    public void updateUuid(String mid, String uuid) throws SQLException {
+
+        String sql = "UPDATE tbl_member set uuid = ? where mid = ?";
+        @Cleanup Connection con = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement psmt = con.prepareStatement(sql);
+        psmt.setString(1, uuid);
+        psmt.setString(2, mid);
+        psmt.executeUpdate();
+    }
+
+    public MemberVO selectUUID(String uuid) throws Exception {
+        String sql = "SELECT mid,mpw,mname,uuid FROM tbl_member where uuid = ?";
+        @Cleanup Connection con = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement psmt = con.prepareStatement(sql);
+        psmt.setString(1, uuid);
+        @Cleanup ResultSet rs = psmt.executeQuery();
+        rs.next();
+        MemberVO vo = MemberVO.builder()
+                .mid(rs.getString(1))
+                .mpw(rs.getString(2))
+                .mname(rs.getString(3))
+                .uuid(rs.getString(4))
+                .build();
+
+        return vo;
+    }
+
+
 }

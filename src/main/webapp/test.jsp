@@ -1,10 +1,19 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<h1>테스트 페이지</h1>
-</body>
-</html>
+<%@ page import="kroryi.DTO.MemberDTO" %>
+
+<%
+    String mid = request.getParameter("mid");
+    String mpw = request.getParameter("mpw");
+%>
+
+<%
+    if (mid.equals("test")) {
+%>
+        <%=mid%>님 방문을 환경합니다.
+<%
+    }else{
+%>
+        잘못 입력 하셨습니다.
+<%
+    }
+%>
