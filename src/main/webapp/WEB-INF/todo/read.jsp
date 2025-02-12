@@ -5,7 +5,7 @@
 </head>
 <body>
 <jsp:include page="/menu.jsp"/>
-
+${appName}
 <h1>Todo 상세보기</h1>
 <div>
     <input type="text" name="tno" value="${dto.tno}" readonly>

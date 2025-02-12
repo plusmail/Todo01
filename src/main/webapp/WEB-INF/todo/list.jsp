@@ -9,6 +9,7 @@
 <body>
 <h1>Todo 목록보기</h1>
 <jsp:include page="/menu.jsp"/>
+${appName}
 
 <form action="${cp}/logout" method="post">
     <button>로그아웃</button>

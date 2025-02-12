@@ -66,6 +66,7 @@ public class LoginController extends HttpServlet {
                 session.setMaxInactiveInterval(600);
                 session.setAttribute("loginInfo", dto);
                 res.sendRedirect("/");
+
             }else{
                 res.sendRedirect("/login?result=error");
             }

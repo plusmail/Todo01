@@ -1,5 +1,6 @@
 package kroryi.Controller.todo;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -22,6 +23,11 @@ public class TodoReadController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         log.info("/todo/read doGet-->");
+        // ServletContext에 appName로 등록한 속성,값을 읽을 수 있고(애플리케이션 전역변수 취급)
+        ServletContext servletContext = req.getServletContext();
+        log.info("appName todo read: {}" , servletContext.getAttribute("appName"));
+
+
         Long tno = Long.parseLong(req.getParameter("tno"));
 
         TodoDTO dto = null;
